@@ -4,3 +4,4 @@ npx shadcn@latest add badge
 npx shadcn@latest add menubar
 npx shadcn@latest add sidebar
 npx shadcn@latest add tabs
+npm install framer-motion react-countup react-icons swiper
