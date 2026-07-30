@@ -1,14 +1,14 @@
-import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import React from 'react';
+import { connection } from "next/server";
 
-const Home = () => {
-  return (<div>
-      <Header/>
-      <Hero/>
-      <Footer/>
-  </div>);
-};
+export default async function Home() {
+  await connection();
 
-export default Home;
+  return (
+    <div>
+      <Header />
+      <Footer />
+    </div>
+  );
+}
