@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/node": "26.1.2",
     "autoprefixer": "^10.5.4",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
