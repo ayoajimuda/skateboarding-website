@@ -31,7 +31,7 @@ export const magmaBreakBrush = localFont({
 });
 
 export const rouetaCreupo = localFont({
-  src: "./fonts/roueta-creupo/RouetaCreupo.otf",
+  src: "./fonts/roueta-creupo/Roueta Creupo.ttf",
   variable: "--font-roueta-creupo",
   display: "swap",
 });
