@@ -1,1 +1,0 @@
-# Guides/Blog Page
