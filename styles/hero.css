@@ -1,15 +1,16 @@
-
 .hero {
+  --slam-ink: #0a0a0a;
+
   position: relative;
   display: grid;
-  grid-template-columns: 36fr 40fr;
+  grid-template-columns: 42fr 58fr;
   align-items: stretch;
   min-height: calc(100vh - 140px);
   background-color: #f7f7f5;
 }
 
 .hero > * {
-  min-width: 0;      /* the actual fix — lets both columns shrink */
+  min-width: 0;
 }
 
 /* ---------- left panel ---------- */
@@ -18,75 +19,54 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;          /* centres the blocks */
-  text-align: center;           /* centres the text inside them */
-  gap: clamp(2rem, 6vh, 4.5rem);
-  padding: clamp(2rem, 5vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
-
-  min-width: 0;                 /* lets the column actually shrink */
-  container-type: inline-size;  /* size text against THIS box, not the viewport */
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(1.75rem, 5vh, 3rem);
+  padding: clamp(2.5rem, 6vw, 5.5rem) clamp(1.75rem, 5vw, 4.5rem);
+  container-type: inline-size;
 }
 
 .hero-shout h2 {
   margin: 0;
-  color: #0a0a0a;
-  font-size: clamp(1.9rem, 11cqw, 6rem);
+  color: var(--slam-ink);
+  font-size: clamp(2.25rem, 12cqw, 6.5rem);
   font-weight: 500;
-  line-height: 1.18;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
-/* the third line lands on its own beat, as in the reference */
 .hero-shout h2:last-child {
-  margin-top: clamp(1.5rem, 5vh, 3.5rem);
-}
-
-.hero-strap {
-  max-width: 34ch;
-  margin: 0 auto;               /* was `0` — auto centres the narrow block */
-  color: #3a3a38;
-  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
-  line-height: 1.5;
+  margin-top: clamp(0.75rem, 2.5vh, 1.5rem);
 }
 
 .hero-shout .line {
   display: block;
 }
 
-/* ---------- right panel ---------- */
+.hero-strap {
+  max-width: 36ch;
+  margin: 0;
+  color: #3a3a38;
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(0.95rem, 2.4cqw, 1.1rem);
+  line-height: 1.55;
+}
+
+/* ---------- right panel: full-bleed ---------- */
 
 .hero-image {
   position: relative;
   overflow: hidden;
-  height: 100%;
-  width: 150%;
-  max-width: min(56vh, 42vw);   /* whichever axis is scarcer */
-  aspect-ratio: 1 / 1;
-  justify-self: center;
+  width: 1000px;
+  height: 1000px;
 }
 
 .hero-image img {
   object-fit: cover;
-  object-position: 50% 35%;
+  object-position: 50% 10%;
 }
-
-@media (max-width: 1100px) and (min-width: 821px) {
-  .hero {
-    grid-template-columns: 1fr 1fr;   /* even split; 36/40 starves the copy */
-  }
-
-  .hero-copy {
-    padding: 2rem 1.5rem;
-  }
-
-  .hero-image {
-    max-width: min(40vh, 46vw);
-  }
-}
-
 
 /* ---------- stacked below 820px ---------- */
 
@@ -97,51 +77,24 @@
   }
 
   .hero-copy {
-    gap: 1.5rem;
+    order: 2;
+    gap: 1.25rem;
     padding: clamp(2rem, 8vw, 3rem) 1.5rem;
-    order: 2;                    /* image leads on mobile */
   }
 
   .hero-shout h2 {
-    font-size: clamp(1.9rem, 8.5cqw, 4rem);
-  }
-
-  .hero-shout h2:last-child {
-    margin-top: 1.25rem;
-  }
-
-  .hero-strap {
-    font-size: 1rem;             /* 1.1vw collapses to nothing here */
+    font-size: clamp(2.25rem, 11cqw, 4.25rem);
   }
 
   .hero-image {
     order: 1;
-    width: 100%;
-    max-width: none;        /* the missing line */
-    aspect-ratio: 4 / 5;        /* replaces min-height: 55vh */
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
 }
-
-/* ---------- narrow phones ---------- */
 
 @media (max-width: 480px) {
-  .hero-shout h2 {
-    font-size: clamp(1.6rem, 10cqw, 2.75rem);
-  }
-
   .hero-image {
-    aspect-ratio: 1 / 1;         /* 4:5 eats the fold on small screens */
-  }
-}
-
-/* ---------- short, wide windows ---------- */
-
-@media (min-width: 821px) and (max-height: 700px) {
-  .hero-image {
-    width: min(100%, 60vh);      /* claw back size when height is scarce */
-  }
-
-  .hero-copy {
-    gap: 1.5rem;
+    aspect-ratio: 1 / 1;
   }
 }

@@ -23,11 +23,10 @@ const Hero = () => {
     <section className="hero">
       <div className="hero-copy">
         <div className={`${thrashBurn.className} hero-shout`}>
-          <h2>No Fear!</h2>
-          <h2>No Overthinking!</h2>
+          <h2>No Fear !</h2>
+          <h2>No Overthinking !</h2>
           <h2>
-            <span className="line">Just go </span>
-            <span className="line">Skateboarding!</span>
+            <span className="line">Just Go Skateboarding !</span>
           </h2>
         </div>
 

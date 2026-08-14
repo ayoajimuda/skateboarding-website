@@ -12,7 +12,7 @@
   column-gap: var(--edge);
   height: 100px;
   padding-inline: var(--edge);
-  background-color: #050505;
+  background-color: #f7f7f5;
   z-index: 10;
   overflow: hidden;
 }
@@ -69,13 +69,13 @@
 
 .navbar a:hover,
 .navbar a:focus-visible {
-  color: #f5f5f5;
+  color: #f7f7f5;
   background-color: #050505;
   background-image: radial-gradient(rgba(255, 255, 255, 0.25) 22%, transparent 23%);
 }
 
 .navbar a:focus-visible {
-  outline: 2px solid #f5f5f5;
+  outline: 2px solid #f7f7f5;
   outline-offset: 2px;
 }
 
