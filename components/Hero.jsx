@@ -42,7 +42,7 @@ const Hero = () => {
           alt="Skater mid-trick"
           fill
           priority
-          sizes="(max-width: 820px) 100vw, 56vw"
+          sizes="(max-width: 820px) 100vw, 560vw"
         />
       </div>
     </section>

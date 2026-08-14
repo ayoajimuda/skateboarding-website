@@ -3,9 +3,13 @@
   position: relative;
   display: grid;
   grid-template-columns: 36fr 40fr;
-  align-items: center;
+  align-items: stretch;
   min-height: calc(100vh - 140px);
   background-color: #f7f7f5;
+}
+
+.hero > * {
+  min-width: 0;      /* the actual fix — lets both columns shrink */
 }
 
 /* ---------- left panel ---------- */
@@ -14,19 +18,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;          /* centres the blocks */
+  text-align: center;           /* centres the text inside them */
   gap: clamp(2rem, 6vh, 4.5rem);
   padding: clamp(2rem, 5vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
+
+  min-width: 0;                 /* lets the column actually shrink */
+  container-type: inline-size;  /* size text against THIS box, not the viewport */
 }
 
 .hero-shout h2 {
   margin: 0;
   color: #0a0a0a;
-  font-size: clamp(1.9rem, 3.6vw, 4rem);
-  font-weight: 400;
+  font-size: clamp(1.9rem, 11cqw, 6rem);
+  font-weight: 500;
   line-height: 1.18;
-  letter-spacing: 0.01em;
   text-transform: uppercase;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 /* the third line lands on its own beat, as in the reference */
@@ -36,11 +45,15 @@
 
 .hero-strap {
   max-width: 34ch;
-  margin: 0;
+  margin: 0 auto;               /* was `0` — auto centres the narrow block */
   color: #3a3a38;
   font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(0.95rem, 1.1vw, 1.15rem);
   line-height: 1.5;
+}
+
+.hero-shout .line {
+  display: block;
 }
 
 /* ---------- right panel ---------- */
@@ -48,15 +61,32 @@
 .hero-image {
   position: relative;
   overflow: hidden;
-  width: clamp(900px, 70vh, 1200px);
-  height: clamp(1200px, 70vh, 1500px);
+  height: 100%;
+  width: 150%;
+  max-width: min(56vh, 42vw);   /* whichever axis is scarcer */
   aspect-ratio: 1 / 1;
+  justify-self: center;
 }
 
 .hero-image img {
   object-fit: cover;
   object-position: 50% 35%;
 }
+
+@media (max-width: 1100px) and (min-width: 821px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;   /* even split; 36/40 starves the copy */
+  }
+
+  .hero-copy {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-image {
+    max-width: min(40vh, 46vw);
+  }
+}
+
 
 /* ---------- stacked below 820px ---------- */
 
@@ -69,13 +99,49 @@
   .hero-copy {
     gap: 1.5rem;
     padding: clamp(2rem, 8vw, 3rem) 1.5rem;
+    order: 2;                    /* image leads on mobile */
+  }
+
+  .hero-shout h2 {
+    font-size: clamp(1.9rem, 8.5cqw, 4rem);
   }
 
   .hero-shout h2:last-child {
     margin-top: 1.25rem;
   }
 
+  .hero-strap {
+    font-size: 1rem;             /* 1.1vw collapses to nothing here */
+  }
+
   .hero-image {
-    min-height: 55vh;
+    order: 1;
+    width: 100%;
+    max-width: none;        /* the missing line */
+    aspect-ratio: 4 / 5;        /* replaces min-height: 55vh */
+  }
+}
+
+/* ---------- narrow phones ---------- */
+
+@media (max-width: 480px) {
+  .hero-shout h2 {
+    font-size: clamp(1.6rem, 10cqw, 2.75rem);
+  }
+
+  .hero-image {
+    aspect-ratio: 1 / 1;         /* 4:5 eats the fold on small screens */
+  }
+}
+
+/* ---------- short, wide windows ---------- */
+
+@media (min-width: 821px) and (max-height: 700px) {
+  .hero-image {
+    width: min(100%, 60vh);      /* claw back size when height is scarce */
+  }
+
+  .hero-copy {
+    gap: 1.5rem;
   }
 }

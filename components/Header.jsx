@@ -15,7 +15,7 @@ const Header = () => {
             </nav>
 
             <div className={styles['slam-logo']}>
-                <Image src="/images/logo.png" alt="Slam Logo" className="Logo" width={40} height={40} />
+                <Image src="/images/logo.png" alt="Slam Logo" width={220} height={220} priority className= {styles['slam-logo-img']}/>
             </div>
 
             <nav className={styles.navbar}>
